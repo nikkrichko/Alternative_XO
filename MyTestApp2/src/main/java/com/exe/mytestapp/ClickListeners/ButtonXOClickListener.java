@@ -36,9 +36,16 @@ public class ButtonXOClickListener implements View.OnClickListener {
             if (iButton.isActivated()){
                 noteWindow();
             } else {
-
+                if (cp == PlayersXO.O){
+                    iButton.setImageResource(R.drawable.abc_ab_solid_dark_holo);
+                    iButton.setActivated(true);
+                } else {
+                    iButton.setImageResource(R.drawable.ic_launcher);
+                    iButton.setActivated(true);
+//                    iButton.setClickable(false);
+//                    iButton.setEnabled(false);
             }
-
+        }
     }
 
     private void noteWindow(){
