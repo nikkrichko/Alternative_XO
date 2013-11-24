@@ -1,4 +1,4 @@
-package com.exe.mytestapp.ClickListeners;
+package com.exe.mytestapp.controller.listeners;
 
 import android.view.View;
 import android.widget.Button;

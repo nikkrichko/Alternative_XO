@@ -14,14 +14,21 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.exe.mytestapp.MyActivity"
+            android:name="com.exe.mytestapp.view.MyActivity"
             android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".view.IntrodatcionActivity"
+            android:label="@string/title_activity_introduction" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
     </application>
 
 </manifest>

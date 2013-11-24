@@ -1,4 +1,4 @@
-package com.exe.mytestapp;
+package com.exe.mytestapp.model;
 
 /**
  * Created by Nikita on 19.11.13.

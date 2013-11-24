@@ -1,8 +1,8 @@
-package com.exe.mytestapp.ClickListeners;
+package com.exe.mytestapp.controller.listeners;
 
 import android.view.View;
 
-import com.exe.mytestapp.MyActivity;
+import com.exe.mytestapp.view.MyActivity;
 
 /**
  * Created by Nikita on 20.11.13.

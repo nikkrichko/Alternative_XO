@@ -1,4 +1,4 @@
-package com.exe.mytestapp.ClickListeners;
+package com.exe.mytestapp.controller.listeners;
 
 import android.content.Context;
 import android.view.Gravity;
