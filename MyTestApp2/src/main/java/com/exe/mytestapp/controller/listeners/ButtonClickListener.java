@@ -19,19 +19,9 @@ public class ButtonClickListener implements View.OnClickListener{
         this.mText = mText;
     }
 
-
-
-
     @Override
     public void onClick(View v){
-
         Button button = (Button)v;
         mText.setText("other" + button.getId());
-
-
-
-//        Button button = (Button)v;
-//        button.setText("click");
-
     }
 }

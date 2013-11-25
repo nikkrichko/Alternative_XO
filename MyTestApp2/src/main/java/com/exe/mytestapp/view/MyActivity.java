@@ -12,7 +12,7 @@ import com.exe.mytestapp.controller.GameListener;
 import com.exe.mytestapp.controller.listeners.ButtonClickListener;
 import com.exe.mytestapp.controller.listeners.OnResetListener;
 import com.exe.mytestapp.R;
-import com.exe.mytestapp.controller.RealGameController;
+//import com.exe.mytestapp.controller.RealGameController;
 import com.exe.mytestapp.model.Adapter;
 import com.exe.mytestapp.model.Player;
 import com.exe.mytestapp.model.PlayersXO;
@@ -20,17 +20,13 @@ import com.exe.mytestapp.model.PlayersXO;
 import android.view.Menu;
 import android.view.MenuItem;
 
-/**
- * Created by Nikita on 09.11.13.
- */
-public class MyActivity extends Activity implements GameListener {
 
-//    private List<ImageButton> mButtons = new ArrayList<ImageButton>(9);
+public class MyActivity extends Activity implements GameListener {
 
     private Button mResetButton;
     private Player player1 = new Player();
     private Player player2 = new Player();
-    private RealGameController gameController = new RealGameController(player1, player2, this);
+//    private RealGameController gameController;
     private TextView mTextTurnOn;
     private GridView gridView;
     private Adapter fieldAdapter;
@@ -50,18 +46,20 @@ public class MyActivity extends Activity implements GameListener {
         setContentView(R.layout.activity_main);
         Intent tmpIntent = getIntent();
         extractData(tmpIntent);
+        initPlayer();
+//        gameController = new RealGameController(player1, player2, this);
         final TextView mtext = (TextView) findViewById(R.id.hello_world);
         mTextTurnOn = (TextView) findViewById(R.id.move_on);
         mResetButton = (Button)findViewById(R.id.reset);
         gridView = (GridView)findViewById(R.id.main_grid);
-        initPlayer();
+
 
 
 
         Context context = getApplicationContext();
 
 
-        fieldAdapter = new Adapter(context, 0, gameController);
+        fieldAdapter = new Adapter(context, 0, /*gameController,*/ player1, player2, this);
         gridView.setAdapter(fieldAdapter);
         ButtonClickListener tText = new ButtonClickListener(mtext);
         mResetButton.setOnClickListener(new OnResetListener(this));
@@ -79,7 +77,8 @@ public class MyActivity extends Activity implements GameListener {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case IDM_RESET:
-                gameController.reset();
+//                gameController.reset();
+                fieldAdapter.reset();
                 item.setChecked(true);
                 break;
             case IDM_NEW:
@@ -93,18 +92,18 @@ public class MyActivity extends Activity implements GameListener {
 
 
     public void resetActivity(){
-            gameController.reset();
+        fieldAdapter.reset();
+//            gameController.reset();
             fieldAdapter.clear();
 
     }
 
     private void initPlayer(){
 
-        player1.setImage(R.drawable.abc_ab_bottom_solid_dark_holo);
+        player1.setImage(R.drawable.cross);
         player1.setFigure(PlayersXO.O);
 
-
-        player2.setImage(R.drawable.ic_launcher);
+        player2.setImage(R.drawable.zerro);
         player2.setFigure(PlayersXO.X);
     }
 

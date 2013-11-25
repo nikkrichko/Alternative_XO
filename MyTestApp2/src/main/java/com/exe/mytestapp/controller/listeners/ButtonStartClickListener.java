@@ -14,15 +14,12 @@ import com.exe.mytestapp.view.MyActivity;
  * Created by Nikita on 24.11.13.
  */
 public class ButtonStartClickListener implements View.OnClickListener {
-    Activity context;
+    private Activity context;
 
-    EditText player1Name;
-    EditText player2Name;
-
-
+    private EditText player1Name;
+    private EditText player2Name;
 
     public ButtonStartClickListener(Activity context, EditText player1Name, EditText player2Name) {
-
         this.context = context;
         this.player1Name = player1Name;
         this.player2Name = player2Name;
@@ -32,13 +29,10 @@ public class ButtonStartClickListener implements View.OnClickListener {
     public void onClick(View view) {
         Intent intent = new Intent(context, MyActivity.class);
 
-
         Player player1 = new Player();
         player1.setName(player1Name.getText().toString());
-
         Player player2 = new Player();
         player2.setName(player2Name.getText().toString());
-
         intent.putExtra("PLAYER_1", player1);
         intent.putExtra("PLAYER_2", player2);
         context.startActivity(intent);
