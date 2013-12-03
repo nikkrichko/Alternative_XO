@@ -87,10 +87,13 @@ private PlayersXO[][] field = new PlayersXO[3][3];
     @Override
     public boolean move(int x, int y) {
 
-        if (field[x][y] == null){
-            field[x][y] = currentPlayer.getFigure();
+        int position = x * fieldSize() + y;
+        Player player = getItem(position);
+        if (player == null){
+           setPlayerInPosition(x, y, currentPlayer); //TODO
+
             Player previosPlayer = currentPlayer;
-            if (currentPlayer.getFigure() == player2.getFigure()){
+            if (currentPlayer == player2){
                 currentPlayer = player1;
             } else {
                 currentPlayer = player2;

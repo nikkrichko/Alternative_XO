@@ -1,7 +1,10 @@
 package com.exe.mytestapp.view;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -13,6 +16,7 @@ import com.exe.mytestapp.controller.listeners.ButtonClickListener;
 import com.exe.mytestapp.controller.listeners.OnResetListener;
 import com.exe.mytestapp.R;
 //import com.exe.mytestapp.controller.RealGameController;
+import com.exe.mytestapp.controller.listeners.dialog.ResumeClickListener;
 import com.exe.mytestapp.model.Adapter;
 import com.exe.mytestapp.model.Player;
 import com.exe.mytestapp.model.PlayersXO;
@@ -31,10 +35,10 @@ public class MyActivity extends Activity implements GameListener {
     private GridView gridView;
     private Adapter fieldAdapter;
 
-
-
     private static final int IDM_NEW = 101;
     private static final int IDM_RESET = 102;
+
+    private final boolean firstStart = true;
 
 
 
@@ -90,6 +94,26 @@ public class MyActivity extends Activity implements GameListener {
         return true;
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        // TODO
+        if (!firstStart){
+        new  AlertDialog.Builder(this)
+        .setMessage("Do you want continue?")
+                .setPositiveButton("YES", new ResumeClickListener())
+                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(MyActivity.this, IntrodatcionActivity.class);
+                        MyActivity.this.startActivity(intent);
+                        MyActivity.this.finish();
+                    }
+
+                }).show();
+        }
+    }
 
     public void resetActivity(){
         fieldAdapter.reset();
@@ -107,7 +131,6 @@ public class MyActivity extends Activity implements GameListener {
         player2.setFigure(PlayersXO.X);
     }
 
-
     @Override
     public void onMoveFinished(int x, int y, Player player) {
         mTextTurnOn.setText(getString(R.string.who_move_now) + player.getName());
@@ -118,4 +141,8 @@ public class MyActivity extends Activity implements GameListener {
         player2 = (Player)intent.getSerializableExtra("PLAYER_2");
 
     }
+
+
+
+
 }
