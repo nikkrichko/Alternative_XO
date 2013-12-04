@@ -1,6 +1,7 @@
 package com.exe.mytestapp.model;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -50,7 +51,7 @@ private PlayersXO[][] field = new PlayersXO[3][3];
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageButton imageButton = new ImageButton(getContext());
+        ImageButton imageButton = (ImageButton) LayoutInflater.from(getContext()).inflate(R.layout.field_item, null);
         imageButton.setImageResource(R.drawable.nulls);
 
         Player tmpPlayer = getItem(position);

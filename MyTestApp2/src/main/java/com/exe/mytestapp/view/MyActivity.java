@@ -12,6 +12,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.exe.mytestapp.controller.GameListener;
+import com.exe.mytestapp.controller.listeners.ButtonBigFieldListener;
 import com.exe.mytestapp.controller.listeners.ButtonClickListener;
 import com.exe.mytestapp.controller.listeners.OnResetListener;
 import com.exe.mytestapp.R;
@@ -28,11 +29,12 @@ import android.view.MenuItem;
 public class MyActivity extends Activity implements GameListener {
 
     private Button mResetButton;
+    private Button mBigFieldButton;
     private Player player1 = new Player();
     private Player player2 = new Player();
 //    private RealGameController gameController;
     private TextView mTextTurnOn;
-    private GridView gridView;
+//    private GridView gridView;
     private Adapter fieldAdapter;
 
     private static final int IDM_NEW = 101;
@@ -55,7 +57,10 @@ public class MyActivity extends Activity implements GameListener {
         final TextView mtext = (TextView) findViewById(R.id.hello_world);
         mTextTurnOn = (TextView) findViewById(R.id.move_on);
         mResetButton = (Button)findViewById(R.id.reset);
-        gridView = (GridView)findViewById(R.id.main_grid);
+//        gridView = (GridView)findViewById(R.id.main_grid);
+//        gridView = (GridView)findViewById(R.id.grid_litle_filed);
+        mBigFieldButton = (Button) findViewById(R.id.btnBigField);
+
 
 
 
@@ -64,10 +69,11 @@ public class MyActivity extends Activity implements GameListener {
 
 
         fieldAdapter = new Adapter(context, 0, /*gameController,*/ player1, player2, this);
-        gridView.setAdapter(fieldAdapter);
+//        gridView.setAdapter(fieldAdapter);
         ButtonClickListener tText = new ButtonClickListener(mtext);
         mResetButton.setOnClickListener(new OnResetListener(this));
         mTextTurnOn.setText(player1.getName());
+        mBigFieldButton.setOnClickListener(new ButtonBigFieldListener(this));
     }
 
     @Override
