@@ -40,7 +40,7 @@ public class MyActivity extends Activity implements GameListener {
     private static final int IDM_NEW = 101;
     private static final int IDM_RESET = 102;
 
-    private final boolean firstStart = true;
+    private boolean firstStart = true;
 
 
 
@@ -74,6 +74,7 @@ public class MyActivity extends Activity implements GameListener {
         mResetButton.setOnClickListener(new OnResetListener(this));
         mTextTurnOn.setText(player1.getName());
         mBigFieldButton.setOnClickListener(new ButtonBigFieldListener(this));
+
     }
 
     @Override
@@ -101,8 +102,8 @@ public class MyActivity extends Activity implements GameListener {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        super.onResume();
         // TODO
         if (!firstStart){
         new  AlertDialog.Builder(this)
@@ -119,6 +120,7 @@ public class MyActivity extends Activity implements GameListener {
 
                 }).show();
         }
+        firstStart = false;
     }
 
     public void resetActivity(){

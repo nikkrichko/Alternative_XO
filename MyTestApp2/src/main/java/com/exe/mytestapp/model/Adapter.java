@@ -1,6 +1,7 @@
 package com.exe.mytestapp.model;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,8 @@ private PlayersXO[][] field = new PlayersXO[3][3];
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageButton imageButton = (ImageButton) LayoutInflater.from(getContext()).inflate(R.layout.field_item, null);
         imageButton.setImageResource(R.drawable.nulls);
+
+//        imageButton.setBackgroundResource(R.color.soft_grey);
 
         Player tmpPlayer = getItem(position);
         int x = position % /*gameController.*/fieldSize();
