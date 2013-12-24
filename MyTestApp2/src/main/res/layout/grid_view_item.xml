@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+<GridView
+
+    android:id="@+id/grid_in_big"
+    android:layout_width="126dp"
+    android:layout_height="126dp"
+    android:numColumns="3"
+    android:background="@color/dark_grey"
+
+    />
+
+    </LinearLayout>
+
+
+    <!--android:horizontalSpacing="5dp"-->
+    <!--android:verticalSpacing="5dp"-->

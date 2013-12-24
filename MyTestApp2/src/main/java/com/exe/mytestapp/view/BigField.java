@@ -6,7 +6,7 @@ import android.widget.GridView;
 
 import com.exe.mytestapp.R;
 import com.exe.mytestapp.controller.GameListener;
-import com.exe.mytestapp.model.Adapter;
+import com.exe.mytestapp.model.MyBaseAdapter;
 import com.exe.mytestapp.model.Player;
 import com.exe.mytestapp.model.PlayersXO;
 
@@ -25,7 +25,7 @@ public class BigField extends Activity implements GameListener {
 
         initPlayer();
         gridView = (GridView)findViewById(R.id.grid_litle_filed);
-        gridView.setAdapter(new Adapter(this, 0, player1, player2, this));
+        gridView.setAdapter(new MyBaseAdapter(this, player1, player2));
     }
 
     private void initPlayer(){

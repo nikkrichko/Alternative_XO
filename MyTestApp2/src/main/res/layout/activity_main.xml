@@ -6,8 +6,8 @@
     android:orientation="vertical"
     >
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:orientation="vertical"
         android:gravity="top"
         android:layout_weight="0">
@@ -19,7 +19,7 @@
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_gravity="center"
             android:layout_weight="0"/>
 
 
@@ -33,118 +33,18 @@
             android:layout_gravity="center"
             android:layout_weight="1"/>
 
-    </LinearLayout>
-    <!--<LinearLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="vertical"-->
-    <!--android:layout_gravity="center"-->
-    <!--android:gravity="center"-->
-    <!--android:layout_weight="3">-->
+
+   <GridView
+       android:id="@+id/grid_view_on_main"
+       android:layout_width="wrap_content"
+       android:layout_height="390dp"
+       android:numColumns="3"
+       android:horizontalSpacing="3dp"
+       android:verticalSpacing="3dp"
+
+       />
 
 
-
-<!--<LinearLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="horizontal">-->
-<!--</LinearLayout>-->
-
-
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal"-->
-        <!-->-->
-        <!--<ImageButton-->
-            <!--android:id="@+id/b1"-->
-            <!--android:layout_width="48dp"-->
-            <!--android:layout_height="48dp"-->
-
-            <!--/>-->
-
-        <!--<ImageButton-->
-            <!--android:id="@+id/b2"-->
-            <!--android:layout_width="48dp"-->
-            <!--android:layout_height="48dp"-->
-            <!--/>-->
-
-        <!--<ImageButton-->
-            <!--android:id="@+id/b3"-->
-            <!--android:layout_width="48dp"-->
-            <!--android:layout_height="48dp"-->
-            <!--/>-->
-    <!--</LinearLayout>-->
-
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal">-->
-
-        <!--<ImageButton-->
-
-            <!--android:id="@+id/b4"-->
-            <!--android:layout_width="48dp"-->
-            <!--android:layout_height="48dp"-->
-            <!--/>-->
-
-        <!--<ImageButton-->
-            <!--android:id="@+id/b5"-->
-            <!--android:layout_width="48dp"-->
-            <!--android:layout_height="48dp"-->
-            <!--/>-->
-
-        <!--<ImageButton-->
-            <!--android:id="@+id/b6"-->
-            <!--android:layout_width="48dp"-->
-            <!--android:layout_height="48dp"-->
-            <!--/>-->
-
-    <!--</LinearLayout>-->
-
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal">-->
-
-        <!--<ImageButton-->
-            <!--android:id="@+id/b7"-->
-            <!--android:layout_width="48dp"-->
-            <!--android:layout_height="48dp"-->
-            <!--/>-->
-
-        <!--<ImageButton-->
-            <!--android:id="@+id/b8"-->
-            <!--android:layout_width="48dp"-->
-            <!--android:layout_height="48dp"-->
-            <!--/>-->
-
-        <!--<ImageButton-->
-            <!--android:id="@+id/b9"-->
-            <!--android:layout_width="48dp"-->
-            <!--android:layout_height="48dp"-->
-            <!--/>-->
-    <!--</LinearLayout>-->
-<!--</LinearLayout>-->
-
-
-    <GridView
-        android:id="@+id/main_grid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numColumns="3"
-        android:horizontalSpacing="2dp"
-
-
-
-        android:layout_weight="1">
-
-
-
-    </GridView>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -180,4 +80,5 @@
 
 
 
+    </LinearLayout>
 </LinearLayout>
