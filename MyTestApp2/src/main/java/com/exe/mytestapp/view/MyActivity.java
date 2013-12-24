@@ -2,8 +2,6 @@ package com.exe.mytestapp.view;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,20 +10,18 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.exe.mytestapp.controller.GameListener;
-import com.exe.mytestapp.controller.listeners.ButtonBigFieldListener;
-import com.exe.mytestapp.controller.listeners.ButtonClickListener;
 //import com.exe.mytestapp.controller.listeners.OnResetListener;
 import com.exe.mytestapp.R;
 //import com.exe.mytestapp.controller.RealGameController;
+import com.exe.mytestapp.controller.listeners.OnResetListener;
 import com.exe.mytestapp.controller.listeners.dialog.ResumeClickListener;
 
+import com.exe.mytestapp.model.BaseFieldAdapter;
 import com.exe.mytestapp.model.GrandFieldAdapter;
-import com.exe.mytestapp.model.MyBaseAdapter;
 import com.exe.mytestapp.model.Player;
 import com.exe.mytestapp.model.PlayersXO;
 
 import android.view.Menu;
-import android.view.MenuItem;
 
 
 public class MyActivity extends Activity implements GameListener {
@@ -37,7 +33,8 @@ public class MyActivity extends Activity implements GameListener {
 //    private RealGameController gameController;
     private TextView mTextTurnOn;
     private GridView gridView;
-    private MyBaseAdapter fieldAdapter;
+    private BaseFieldAdapter fieldAdapter;
+    private GrandFieldAdapter grandFieldAdapter;
 
     private static final int IDM_NEW = 101;
     private static final int IDM_RESET = 102;
@@ -57,17 +54,18 @@ public class MyActivity extends Activity implements GameListener {
         initPlayer();
 //        final TextView mtext = (TextView) findViewById(R.id.hello_world);
 //        mTextTurnOn = (TextView) findViewById(R.id.move_on);
-//        mResetButton = (Button)findViewById(R.id.reset);
+        mResetButton = (Button)findViewById(R.id.reset);
 //        mBigFieldButton = (Button) findViewById(R.id.btnBigField);
-
+        grandFieldAdapter = new GrandFieldAdapter(this, player1, player2);
 //        Context context = getApplicationContext();
 
 //        ButtonClickListener tText = new ButtonClickListener(mtext);
 //        mTextTurnOn.setText(player1.getName());
 //        mBigFieldButton.setOnClickListener(new ButtonBigFieldListener(this));
-        gridView = (GridView)findViewById(R.id.grid_view_on_main);
-        gridView.setAdapter(new GrandFieldAdapter(this, player1, player2));
 
+        gridView = (GridView)findViewById(R.id.grid_view_on_main);
+        gridView.setAdapter(grandFieldAdapter);
+        mResetButton.setOnClickListener(new OnResetListener(grandFieldAdapter));
     }
 
     @Override

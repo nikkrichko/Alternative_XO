@@ -1,16 +1,16 @@
 package com.exe.mytestapp.model;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.exe.mytestapp.R;
-import com.exe.mytestapp.controller.listeners.ButtonXOClickListener;
 
 /**
  * Created by Nikita on 23.12.13.
@@ -23,7 +23,7 @@ public class GrandFieldAdapter extends BaseAdapter {
     private Player player2;
 
 
-    private MyBaseAdapter[][] grandField = new MyBaseAdapter[FIELD_SIZE][FIELD_SIZE];
+    private BaseFieldAdapter[][] grandField = new BaseFieldAdapter[FIELD_SIZE][FIELD_SIZE];
 
     public GrandFieldAdapter(Context context, Player player1, Player player2){
         this.context = context;
@@ -57,11 +57,36 @@ public class GrandFieldAdapter extends BaseAdapter {
 
 
         if(grandField[x][y] == null)
-            grandField[x][y] = new MyBaseAdapter(context, player1, player2);
+            grandField[x][y] = new BaseFieldAdapter(context, player1, player2);
 
         gridView.setAdapter(grandField[x][y]);
         grandField[x][y].notifyDataSetInvalidated();
 
         return linearLayout;
+    }
+
+    public void resetField(){
+        for (int i=0; i<3; i++){
+            for (int j=0;j<3; j++){
+                grandField[i][j].resetField();
+            }
+        }
+        notifyDataSetInvalidated();
+    }
+
+    private boolean checkForReset(){
+        for (int i=0; i<3; i++){
+            for (int j=0;j<3; j++){
+                grandField[i][j] = null;
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void noteWindow(){
+        Toast toast = Toast.makeText(context, "FIELD IS FULL", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.BOTTOM, 0, 0);
+        toast.show();
     }
 }

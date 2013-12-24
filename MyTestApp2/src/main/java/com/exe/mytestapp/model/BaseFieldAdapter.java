@@ -13,7 +13,7 @@ import com.exe.mytestapp.controller.listeners.ButtonXOClickListener;
 /**
  * Created by Nikita on 17.12.13.
  */
-public class MyBaseAdapter extends BaseAdapter {
+public class BaseFieldAdapter extends BaseAdapter {
 
     private int FIELD_SIZE = 3;
     private Player[][] field = new Player[FIELD_SIZE][FIELD_SIZE];
@@ -23,7 +23,7 @@ public class MyBaseAdapter extends BaseAdapter {
     Player player2;
     Player currentPlayer;
 
-    public MyBaseAdapter(Context context, Player player1, Player player2) {
+    public BaseFieldAdapter(Context context, Player player1, Player player2) {
         this.context = context;
         this.player1 = player1;
         this.player2 = player2;
@@ -90,6 +90,25 @@ public class MyBaseAdapter extends BaseAdapter {
 
     public int getCurrentPlayerImage() {
         return currentPlayer.getImage();
+    }
+
+    private boolean checkForReset(){
+        for (int i=0; i<3; i++){
+            for (int j=0;j<0; j++){
+                field[i][j] = null;
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void resetField(){
+        for (int i=0; i<3; i++){
+            for (int j=0;j<3; j++){
+                field[i][j] = null;
+            }
+        }
+        notifyDataSetInvalidated();
     }
 
 }

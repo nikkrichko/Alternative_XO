@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.exe.mytestapp.controller.GameConroller;
-import com.exe.mytestapp.model.MyBaseAdapter;
-import com.exe.mytestapp.model.Player;
+import com.exe.mytestapp.model.BaseFieldAdapter;
 import com.exe.mytestapp.R;
 
 
@@ -17,13 +15,13 @@ public class ButtonXOClickListener implements View.OnClickListener {
 
     private static final String TAG = ButtonXOClickListener.class.getCanonicalName();
 
-    private MyBaseAdapter adapter;
+    private BaseFieldAdapter adapter;
     private Context context;
     private int x;
     private int y;
 
 
-    public ButtonXOClickListener(MyBaseAdapter adapter, Context context, int x, int y){
+    public ButtonXOClickListener(BaseFieldAdapter adapter, Context context, int x, int y){
 
         this.adapter = adapter;
         this.context = context;
@@ -43,6 +41,8 @@ public class ButtonXOClickListener implements View.OnClickListener {
                 iButton.setImageResource(adapter.getCurrentPlayerImage());
         } else {
                     noteWindow();
+
+
         }
         adapter.notifyDataSetInvalidated();
 
