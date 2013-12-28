@@ -37,10 +37,11 @@
    <GridView
        android:id="@+id/grid_view_on_main"
        android:layout_width="wrap_content"
-       android:layout_height="390dp"
+       android:layout_height="wrap_content"
        android:numColumns="3"
-       android:horizontalSpacing="3dp"
-       android:verticalSpacing="3dp"
+       android:horizontalSpacing="5dp"
+       android:verticalSpacing="5dp"
+       android:background="@color/soft_grey"
 
        />
 

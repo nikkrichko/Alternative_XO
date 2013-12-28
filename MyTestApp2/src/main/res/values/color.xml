@@ -3,4 +3,6 @@
     <color name="dark_grey">#4c4c4c</color>
     <color name="soft_grey">#ddd</color>
     <color name="white">#fff</color>
+    <color name="soft_blue">#67d7d7</color>>
+    <color name="soft_red">#ff7f50</color>>
 </resources>

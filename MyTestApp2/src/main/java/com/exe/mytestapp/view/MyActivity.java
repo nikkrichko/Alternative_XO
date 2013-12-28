@@ -13,6 +13,7 @@ import com.exe.mytestapp.controller.GameListener;
 //import com.exe.mytestapp.controller.listeners.OnResetListener;
 import com.exe.mytestapp.R;
 //import com.exe.mytestapp.controller.RealGameController;
+import com.exe.mytestapp.controller.MoveController;
 import com.exe.mytestapp.controller.listeners.OnResetListener;
 import com.exe.mytestapp.controller.listeners.dialog.ResumeClickListener;
 
@@ -35,6 +36,7 @@ public class MyActivity extends Activity implements GameListener {
     private GridView gridView;
     private BaseFieldAdapter fieldAdapter;
     private GrandFieldAdapter grandFieldAdapter;
+    private MoveController moveController;
 
     private static final int IDM_NEW = 101;
     private static final int IDM_RESET = 102;
@@ -53,18 +55,31 @@ public class MyActivity extends Activity implements GameListener {
 //        extractData(tmpIntent);
         initPlayer();
 //        final TextView mtext = (TextView) findViewById(R.id.hello_world);
-//        mTextTurnOn = (TextView) findViewById(R.id.move_on);
+        mTextTurnOn = (TextView) findViewById(R.id.move_on);
         mResetButton = (Button)findViewById(R.id.reset);
 //        mBigFieldButton = (Button) findViewById(R.id.btnBigField);
+
+
+
+
+//        moveController = new MoveController(grandFieldAdapter, player1, player2);
         grandFieldAdapter = new GrandFieldAdapter(this, player1, player2);
+
+
+
+
 //        Context context = getApplicationContext();
 
 //        ButtonClickListener tText = new ButtonClickListener(mtext);
-//        mTextTurnOn.setText(player1.getName());
+
 //        mBigFieldButton.setOnClickListener(new ButtonBigFieldListener(this));
 
         gridView = (GridView)findViewById(R.id.grid_view_on_main);
         gridView.setAdapter(grandFieldAdapter);
+
+        /////////////////////////////////////////////
+//        mTextTurnOn.setText(grandFieldAdapter.getMoveController().getCurrentPlayer().getName());
+        /////////////////////////////////////////////
         mResetButton.setOnClickListener(new OnResetListener(grandFieldAdapter));
     }
 
@@ -102,10 +117,10 @@ public class MyActivity extends Activity implements GameListener {
     private void initPlayer(){
         player1.setName("NIKITA");
         player1.setImage(R.drawable.cross);
-        player1.setFigure(PlayersXO.O);
+        player1.setFigure(PlayersXO.X);
         player2.setName("SLAVA");
         player2.setImage(R.drawable.zerro);
-        player2.setFigure(PlayersXO.X);
+        player2.setFigure(PlayersXO.O);
 
 //        extractData(getIntent());
     }

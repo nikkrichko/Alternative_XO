@@ -5,20 +5,18 @@
 
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:gravity="center"
     >
 
 <GridView
 
     android:id="@+id/grid_in_big"
-    android:layout_width="126dp"
-    android:layout_height="126dp"
+    android:layout_width="123dp"
+    android:layout_height="123dp"
     android:numColumns="3"
     android:background="@color/dark_grey"
-
     />
+
 
     </LinearLayout>
 
-
-    <!--android:horizontalSpacing="5dp"-->
-    <!--android:verticalSpacing="5dp"-->

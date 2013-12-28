@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.exe.mytestapp.controller.MoveController;
 import com.exe.mytestapp.model.BaseFieldAdapter;
 import com.exe.mytestapp.R;
 
@@ -19,26 +20,32 @@ public class ButtonXOClickListener implements View.OnClickListener {
     private Context context;
     private int x;
     private int y;
+    MoveController moveController;
 
 
-    public ButtonXOClickListener(BaseFieldAdapter adapter, Context context, int x, int y){
+    public ButtonXOClickListener(BaseFieldAdapter adapter, Context context, MoveController moveController, int x, int y){
 
         this.adapter = adapter;
         this.context = context;
         this.x = x;
         this.y = y;
+        this.moveController = moveController;
+//        this.moveController = moveController;
     }
 
 
 
     @Override
     public void onClick(View view) {
+        moveController.setBfAdapter(adapter);
         Log.d(TAG, "in onClick");
-//        Player currentPlayer = adapter.getCurrentPlayer();
         ImageButton iButton = (ImageButton)view;
-
-        if (adapter.move(x,y)){
+//        adapter.changeAdapterActivityFalse();
+        if (moveController.move(x,y)){
                 iButton.setImageResource(adapter.getCurrentPlayerImage());
+            moveController.setXY(x, y);
+            moveController.changeCurrentPlayer();
+
         } else {
                     noteWindow();
 
