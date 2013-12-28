@@ -11,6 +11,7 @@ public class MoveController {
     private Player player1;
     private Player player2;
     private Player currentPlayer;
+    private IMoveListener moveListener;
     GrandFieldAdapter gfAdapter;
     BaseFieldAdapter bfAdapter;
 
@@ -23,17 +24,13 @@ public class MoveController {
         this.bfAdapter = bfAdapter;
     }
 
-    public MoveController(GrandFieldAdapter gfAdapter, Player player1, Player player2) {
+    public MoveController(GrandFieldAdapter gfAdapter, Player player1, Player player2, IMoveListener moveListener) {
         this.player1 = player1;
         this.player2 = player2;
         this.currentPlayer = player1;
         this.gfAdapter = gfAdapter;
+        this.moveListener = moveListener;
 
-    }
-
-    public MoveController(BaseFieldAdapter adapter, Player currentPlayer){
-        this.bfAdapter = adapter;
-        this.currentPlayer = currentPlayer;
     }
 
 
@@ -61,6 +58,8 @@ public class MoveController {
                     if (checkForWin(gfAdapter.getBaseFieldType(), currentPlayer)){
                         gameOver(gfAdapter);
                     }
+                    changeCurrentPlayer();
+                    this.moveListener.beforeMove(this.getCurrentPlayer());
                     return true;
                 }
 
@@ -111,7 +110,7 @@ public class MoveController {
         return false;
     }
 
-    public void changeCurrentPlayer(){
+    private void changeCurrentPlayer(){
         if (currentPlayer == player2){
             currentPlayer = player1;
         } else {
@@ -200,7 +199,10 @@ public class MoveController {
         return currentPlayer;
     }
 
+    public interface IMoveListener{
 
+        public void beforeMove(Player player);
 
+    }
 
 }

@@ -25,7 +25,7 @@ import com.exe.mytestapp.model.PlayersXO;
 import android.view.Menu;
 
 
-public class MyActivity extends Activity implements GameListener {
+public class MyActivity extends Activity implements GameListener, MoveController.IMoveListener{
 
     private Button mResetButton;
     private Button mBigFieldButton;
@@ -57,7 +57,7 @@ public class MyActivity extends Activity implements GameListener {
         initPlayer();
         mTextTurnOn = (TextView) findViewById(R.id.move_on);
         mResetButton = (Button)findViewById(R.id.reset);
-        grandFieldAdapter = new GrandFieldAdapter(this, player1, player2);
+        grandFieldAdapter = new GrandFieldAdapter(this, player1, player2, this);
         gridView = (GridView)findViewById(R.id.grid_view_on_main);
         gridView.setAdapter(grandFieldAdapter);
 
@@ -128,6 +128,9 @@ public class MyActivity extends Activity implements GameListener {
     }
 
 
-
+    @Override
+    public void beforeMove(Player player) {
+        mTextTurnOn.setText("NOW MOVE: " + player.getName());
+    }
 
 }

@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.exe.mytestapp.controller.MoveController;
 import com.exe.mytestapp.model.BaseFieldAdapter;
 import com.exe.mytestapp.R;
+import com.exe.mytestapp.model.Player;
 
 
 public class ButtonXOClickListener implements View.OnClickListener {
@@ -40,11 +41,10 @@ public class ButtonXOClickListener implements View.OnClickListener {
         moveController.setBfAdapter(adapter);
         Log.d(TAG, "in onClick");
         ImageButton iButton = (ImageButton)view;
-//        adapter.changeAdapterActivityFalse();
+        Player curPlayer = moveController.getCurrentPlayer();
         if (moveController.move(x,y)){
-                iButton.setImageResource(adapter.getCurrentPlayerImage());
+                iButton.setImageResource(curPlayer.getImage());
             moveController.setXY(x, y);
-            moveController.changeCurrentPlayer();
 
         } else {
                     noteWindow();

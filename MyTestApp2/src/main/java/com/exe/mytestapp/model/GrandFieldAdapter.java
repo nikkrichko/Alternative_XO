@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.exe.mytestapp.R;
+import com.exe.mytestapp.controller.GameConroller;
 import com.exe.mytestapp.controller.MoveController;
 
 /**
@@ -20,8 +21,6 @@ public class GrandFieldAdapter extends BaseAdapter {
     private final int FIELD_SIZE = 3;
     private PositionConverter converter = new PositionConverter();
     private Context context;
-    private Player player1;
-    private Player player2;
     private MoveController moveController;
     private GridView[][] gridViews = new GridView[FIELD_SIZE][FIELD_SIZE];
     private BaseFieldAdapter[][] baseField = new BaseFieldAdapter[FIELD_SIZE][FIELD_SIZE];
@@ -30,16 +29,9 @@ public class GrandFieldAdapter extends BaseAdapter {
 
     private Player[][] baseFieldType = new Player[FIELD_SIZE][FIELD_SIZE];
 
-    public GrandFieldAdapter(Context context, Player player1, Player player2){
+    public GrandFieldAdapter(Context context, Player player1, Player player2, MoveController.IMoveListener moveListener){
         this.context = context;
-        this.player1 = player1;
-        this.player2 = player2;
-        moveController = new MoveController(this, this.player1, this.player2);
-    }
-
-    public GrandFieldAdapter(Context context, MoveController moveController) {
-        this.context = context;
-        this.moveController = moveController;
+        moveController = new MoveController(this, player1, player2, moveListener);
     }
 
     @Override
