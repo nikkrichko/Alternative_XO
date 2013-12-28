@@ -42,42 +42,26 @@ public class MyActivity extends Activity implements GameListener {
     private static final int IDM_RESET = 102;
 
     private boolean firstStart = true;
-
-
-
-
+    ///////////////////////
+    private Intent tmpIntent;
+////////////////////
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Intent tmpIntent = getIntent();
-//        extractData(tmpIntent);
+        //////////////////////////////
+        Intent tmpIntent = getIntent();
+        extractData(tmpIntent);
+        ///////////////////////
         initPlayer();
-//        final TextView mtext = (TextView) findViewById(R.id.hello_world);
         mTextTurnOn = (TextView) findViewById(R.id.move_on);
         mResetButton = (Button)findViewById(R.id.reset);
-//        mBigFieldButton = (Button) findViewById(R.id.btnBigField);
-
-
-
-
-//        moveController = new MoveController(grandFieldAdapter, player1, player2);
         grandFieldAdapter = new GrandFieldAdapter(this, player1, player2);
-
-
-
-
-//        Context context = getApplicationContext();
-
-//        ButtonClickListener tText = new ButtonClickListener(mtext);
-
-//        mBigFieldButton.setOnClickListener(new ButtonBigFieldListener(this));
-
         gridView = (GridView)findViewById(R.id.grid_view_on_main);
         gridView.setAdapter(grandFieldAdapter);
 
-        /////////////////////////////////////////////
+        ///////////////////////////////////////////
 //        mTextTurnOn.setText(grandFieldAdapter.getMoveController().getCurrentPlayer().getName());
         /////////////////////////////////////////////
         mResetButton.setOnClickListener(new OnResetListener(grandFieldAdapter));
@@ -115,14 +99,21 @@ public class MyActivity extends Activity implements GameListener {
 
 
     private void initPlayer(){
-        player1.setName("NIKITA");
+        ///////////////////////////////
+        extractData(getIntent());
+        ////////////////////////////////////////
+
+//        player1.setName("NIKITA");
         player1.setImage(R.drawable.cross);
         player1.setFigure(PlayersXO.X);
-        player2.setName("SLAVA");
+//        player2.setName("SLAVA");
         player2.setImage(R.drawable.zerro);
         player2.setFigure(PlayersXO.O);
 
-//        extractData(getIntent());
+
+
+
+
     }
 
     @Override
