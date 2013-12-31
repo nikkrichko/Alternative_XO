@@ -33,18 +33,75 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <TextView
+    <TextView
             android:text="PLayer 2 Name: "
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <EditText
+    <EditText
             android:id="@+id/player_2_name"
             android:hint="Enter name"
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+</LinearLayout>
+
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" android:gravity="top">
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="4">
+
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" android:gravity="top">
+
+
+            <RadioGroup
+                    android:id="@+id/radio_group_introdaction"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="WIN and Block"
+                        android:id="@+id/rbBlock"
+                        android:checked="true"
+                        />
+                <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Win withOUT BLOCK"
+                        android:id="@+id/rbUnbloc"
+                        android:checked="false"
+                        />
+                <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="To first WIN"
+                        android:id="@+id/rbFirstWin"
+                        android:checked="false"
+                        />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0">
+
+        </LinearLayout>
+
     </LinearLayout>
+
+
 
     <LinearLayout
         android:orientation="horizontal"
@@ -61,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
-        -p
+
         <Button
             android:id="@+id/BTN_cancel"
             android:text="EXIT"
@@ -71,5 +128,6 @@
             android:layout_weight="1"/>
 
     </LinearLayout>
+
 
 </LinearLayout>

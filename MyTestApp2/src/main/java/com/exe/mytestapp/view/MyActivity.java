@@ -22,10 +22,7 @@ import com.exe.mytestapp.controller.listeners.ExitClickListener;
 import com.exe.mytestapp.controller.listeners.OnResetListener;
 import com.exe.mytestapp.controller.listeners.dialog.ResumeClickListener;
 
-import com.exe.mytestapp.model.BaseFieldAdapter;
-import com.exe.mytestapp.model.GrandFieldAdapter;
-import com.exe.mytestapp.model.Player;
-import com.exe.mytestapp.model.PlayersXO;
+import com.exe.mytestapp.model.*;
 
 import android.view.Menu;
 
@@ -38,20 +35,19 @@ public class MyActivity extends Activity implements GameListener, MoveController
     private ImageButton imageButton2;
     private Player player1 = new Player();
     private Player player2 = new Player();
-//    private RealGameController gameController;
+
     private TextView mTextTurnOn;
     private GridView gridView;
     private BaseFieldAdapter fieldAdapter;
     private GrandFieldAdapter grandFieldAdapter;
     private MoveController moveController;
     private Display display;
+    private Rules rules;
     private static final int IDM_NEW = 101;
     private static final int IDM_RESET = 102;
 
     private boolean firstStart = true;
-    ///////////////////////
-    private Intent tmpIntent;
-////////////////////
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,37 +135,32 @@ public class MyActivity extends Activity implements GameListener, MoveController
 
 
     private void initPlayer(){
-        ///////////////////////////////
         extractData(getIntent());
-        ////////////////////////////////////////
-
-//        player1.setName("NIKITA");
         player1.setImage(R.drawable.cross);
         player1.setFigure(PlayersXO.X);
-//        player2.setName("SLAVA");
         player2.setImage(R.drawable.zerro);
         player2.setFigure(PlayersXO.O);
-
-
-
-
-
     }
 
     @Override
     public void onMoveFinished(int x, int y, Player player) {
+
+
         mTextTurnOn.setText(getString(R.string.who_move_now) + player.getName());
     }
 
     private void extractData(Intent intent){
         player1 = (Player)intent.getSerializableExtra("PLAYER_1");
         player2 = (Player)intent.getSerializableExtra("PLAYER_2");
+        rules = (Rules)intent.getSerializableExtra("RULES");
 
     }
 
 
     @Override
     public void beforeMove(Player player) {
+
+//        mTextTurnOn.setText(rules.name().toString());
         mTextTurnOn.setText("NOW MOVE: " + player.getName());
         imageButton1.setBackgroundResource(player.getImage());
         imageButton2.setBackgroundResource(player.getImage());

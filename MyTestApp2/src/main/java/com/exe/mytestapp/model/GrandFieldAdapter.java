@@ -219,8 +219,6 @@ public class GrandFieldAdapter extends BaseAdapter {
         return true;
     }
 
-
-
     private void noteWindowGameOver(){
 
             new  AlertDialog.Builder(context).setTitle(moveController.getCurrentPlayer().getName()
