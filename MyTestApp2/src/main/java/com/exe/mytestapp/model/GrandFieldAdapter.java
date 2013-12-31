@@ -25,15 +25,18 @@ public class GrandFieldAdapter extends BaseAdapter {
     private Display display;
     private int bothSides;
     private MyActivity myActivity;
+    Rules rules;
 
 
     private Player[][] baseFieldType = new Player[FIELD_SIZE][FIELD_SIZE];
 
     public GrandFieldAdapter(Context context, Player player1, Player player2, MoveController.IMoveListener moveListener, Display display, MyActivity myActivity){
         this.context = context;
-        moveController = new MoveController(this, player1, player2, moveListener);
-        this.display = display;
         this.myActivity = myActivity;
+        this.rules = myActivity.getRules();
+        moveController = new MoveController(this, player1, player2, moveListener, rules);
+        this.display = display;
+
     }
 
     @Override
@@ -139,7 +142,6 @@ public class GrandFieldAdapter extends BaseAdapter {
         gridViews[x][y].setBackgroundResource(R.color.red);
     }
 
-
     private void checkWinFieldAndChangeWinnerCollors(int x, int y){
         if (baseField[x][y].getFieldType() != null){
             if (baseField[x][y].getFieldType().getFigure() == PlayersXO.O){
@@ -160,8 +162,6 @@ public class GrandFieldAdapter extends BaseAdapter {
             changegridViewsColorToSoftgray(x, y);
         }
     }
-
-
 
     public void changeColorInOneGridView(int x, int y){
         setGridViewsBachgroundToDarkGrey();
@@ -262,6 +262,7 @@ public class GrandFieldAdapter extends BaseAdapter {
             }
         }
     }
+
     public void changeColor(int x, int y){
 
     }

@@ -48,14 +48,11 @@ public class MyActivity extends Activity implements GameListener, MoveController
 
     private boolean firstStart = true;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //////////////////////////////
         display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
-        ///////////////////////
         Intent tmpIntent = getIntent();
         extractData(tmpIntent);
         initPlayer();
@@ -99,7 +96,6 @@ public class MyActivity extends Activity implements GameListener, MoveController
         return true;
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -122,7 +118,6 @@ public class MyActivity extends Activity implements GameListener, MoveController
         firstStart = false;
     }
 
-
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
@@ -132,7 +127,6 @@ public class MyActivity extends Activity implements GameListener, MoveController
                 .setPositiveButton(android.R.string.yes, new ExitClickListener(this))
                 .create().show();
     }
-
 
     private void initPlayer(){
         extractData(getIntent());
@@ -156,7 +150,6 @@ public class MyActivity extends Activity implements GameListener, MoveController
 
     }
 
-
     @Override
     public void beforeMove(Player player) {
 
@@ -166,4 +159,7 @@ public class MyActivity extends Activity implements GameListener, MoveController
         imageButton2.setBackgroundResource(player.getImage());
     }
 
+    public Rules getRules() {
+        return rules;
+    }
 }

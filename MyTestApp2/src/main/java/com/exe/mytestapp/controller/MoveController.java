@@ -3,6 +3,7 @@ package com.exe.mytestapp.controller;
 import com.exe.mytestapp.model.BaseFieldAdapter;
 import com.exe.mytestapp.model.GrandFieldAdapter;
 import com.exe.mytestapp.model.Player;
+import com.exe.mytestapp.model.Rules;
 
 /**
  * Created by Nikita on 24.12.13.
@@ -14,7 +15,7 @@ public class MoveController {
     private IMoveListener moveListener;
     GrandFieldAdapter gfAdapter;
     BaseFieldAdapter bfAdapter;
-
+    Rules rules;
 
 
     int x;
@@ -24,12 +25,13 @@ public class MoveController {
         this.bfAdapter = bfAdapter;
     }
 
-    public MoveController(GrandFieldAdapter gfAdapter, Player player1, Player player2, IMoveListener moveListener) {
+    public MoveController(GrandFieldAdapter gfAdapter, Player player1, Player player2, IMoveListener moveListener, Rules rules) {
         this.player1 = player1;
         this.player2 = player2;
         this.currentPlayer = player1;
         this.gfAdapter = gfAdapter;
         this.moveListener = moveListener;
+        this.rules = rules;
 
     }
 
@@ -50,11 +52,24 @@ public class MoveController {
                         bfAdapter.setBigFigure();
 
                         bfAdapter.noteWindowWIN();
+
+
+                        checkRuleFirstWin();
+
+
                     }
+
+
+
+
+
+
+
                         gfAdapter.setBaseFieldType();
                     if (isMovePossible(gfAdapter.getBaseField()[x][y])){
                         gfAdapter.changeBaseFieldActivityTrueToFree();
                     }
+
                     if (checkForWin(gfAdapter.getBaseFieldType(), currentPlayer)){
                         gameOver(gfAdapter);
                     }
@@ -92,6 +107,12 @@ public class MoveController {
     public void setXY(int x, int y){
         this.x = x;
         this.y = y;
+    }
+
+    public void checkRuleFirstWin(){
+        if (rules == Rules.FIRST_WIN){
+            gameOver(gfAdapter);
+        }
     }
 
     public void gameOver(GrandFieldAdapter gfAdapter){
