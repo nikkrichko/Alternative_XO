@@ -5,8 +5,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Display;
+import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.exe.mytestapp.controller.GameListener;
@@ -14,6 +18,7 @@ import com.exe.mytestapp.controller.GameListener;
 import com.exe.mytestapp.R;
 //import com.exe.mytestapp.controller.RealGameController;
 import com.exe.mytestapp.controller.MoveController;
+import com.exe.mytestapp.controller.listeners.ExitClickListener;
 import com.exe.mytestapp.controller.listeners.OnResetListener;
 import com.exe.mytestapp.controller.listeners.dialog.ResumeClickListener;
 
@@ -29,6 +34,8 @@ public class MyActivity extends Activity implements GameListener, MoveController
 
     private Button mResetButton;
     private Button mBigFieldButton;
+    private ImageButton imageButton1;
+    private ImageButton imageButton2;
     private Player player1 = new Player();
     private Player player2 = new Player();
 //    private RealGameController gameController;
@@ -37,7 +44,7 @@ public class MyActivity extends Activity implements GameListener, MoveController
     private BaseFieldAdapter fieldAdapter;
     private GrandFieldAdapter grandFieldAdapter;
     private MoveController moveController;
-
+    private Display display;
     private static final int IDM_NEW = 101;
     private static final int IDM_RESET = 102;
 
@@ -51,20 +58,27 @@ public class MyActivity extends Activity implements GameListener, MoveController
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //////////////////////////////
+        display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
+        ///////////////////////
         Intent tmpIntent = getIntent();
         extractData(tmpIntent);
-        ///////////////////////
         initPlayer();
         mTextTurnOn = (TextView) findViewById(R.id.move_on);
         mResetButton = (Button)findViewById(R.id.reset);
-        grandFieldAdapter = new GrandFieldAdapter(this, player1, player2, this);
+        grandFieldAdapter = new GrandFieldAdapter(this, player1, player2, this, display, this);
         gridView = (GridView)findViewById(R.id.grid_view_on_main);
         gridView.setAdapter(grandFieldAdapter);
+
+        imageButton1 = (ImageButton)findViewById(R.id.imageBTN1);
+        imageButton2 = (ImageButton)findViewById(R.id.imageBTN2);
 
         ///////////////////////////////////////////
 //        mTextTurnOn.setText(grandFieldAdapter.getMoveController().getCurrentPlayer().getName());
         /////////////////////////////////////////////
-        mResetButton.setOnClickListener(new OnResetListener(grandFieldAdapter));
+        mResetButton.setOnClickListener(new OnResetListener(grandFieldAdapter, this));
+
+
+
     }
 
     @Override
@@ -72,6 +86,21 @@ public class MyActivity extends Activity implements GameListener, MoveController
         menu.add(Menu.NONE, IDM_NEW, Menu.NONE, "NEW");
         menu.add(Menu.NONE, IDM_RESET, Menu.NONE, "RESET");
         return (super.onCreateOptionsMenu(menu));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+        switch (menuItem.getItemId()){
+            case IDM_NEW:
+                finish();
+                break;
+            case IDM_RESET:
+                grandFieldAdapter.resetField();
+                break;
+            default:
+                return false;
+        }
+        return true;
     }
 
 
@@ -95,6 +124,17 @@ public class MyActivity extends Activity implements GameListener, MoveController
                 }).show();
         }
         firstStart = false;
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Really Exit?")
+                .setMessage("Are you sure you want to exit?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new ExitClickListener(this))
+                .create().show();
     }
 
 
@@ -131,6 +171,8 @@ public class MyActivity extends Activity implements GameListener, MoveController
     @Override
     public void beforeMove(Player player) {
         mTextTurnOn.setText("NOW MOVE: " + player.getName());
+        imageButton1.setBackgroundResource(player.getImage());
+        imageButton2.setBackgroundResource(player.getImage());
     }
 
 }

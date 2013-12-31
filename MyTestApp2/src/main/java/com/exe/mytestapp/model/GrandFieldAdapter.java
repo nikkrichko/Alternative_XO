@@ -1,18 +1,16 @@
 package com.exe.mytestapp.model;
 
+import android.app.AlertDialog;
 import android.content.Context;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.content.DialogInterface;
+import android.graphics.Point;
+import android.view.*;
+import android.widget.*;
 
 import com.exe.mytestapp.R;
-import com.exe.mytestapp.controller.GameConroller;
 import com.exe.mytestapp.controller.MoveController;
+import com.exe.mytestapp.controller.listeners.ExitClickListener;
+import com.exe.mytestapp.view.MyActivity;
 
 /**
  * Created by Nikita on 23.12.13.
@@ -24,14 +22,18 @@ public class GrandFieldAdapter extends BaseAdapter {
     private MoveController moveController;
     private GridView[][] gridViews = new GridView[FIELD_SIZE][FIELD_SIZE];
     private BaseFieldAdapter[][] baseField = new BaseFieldAdapter[FIELD_SIZE][FIELD_SIZE];
-
+    private Display display;
+    private int bothSides;
+    private MyActivity myActivity;
 
 
     private Player[][] baseFieldType = new Player[FIELD_SIZE][FIELD_SIZE];
 
-    public GrandFieldAdapter(Context context, Player player1, Player player2, MoveController.IMoveListener moveListener){
+    public GrandFieldAdapter(Context context, Player player1, Player player2, MoveController.IMoveListener moveListener, Display display, MyActivity myActivity){
         this.context = context;
         moveController = new MoveController(this, player1, player2, moveListener);
+        this.display = display;
+        this.myActivity = myActivity;
     }
 
     @Override
@@ -51,24 +53,59 @@ public class GrandFieldAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        LinearLayout linearLayout = (LinearLayout)LayoutInflater.from(context).inflate(R.layout.grid_view_item, null);
-        GridView gridView = (GridView) linearLayout.findViewById(R.id.grid_in_big);
+//        LinearLayout linearLayout = (LinearLayout)LayoutInflater.from(context).inflate(R.layout.grid_view_item, null);
+//        GridView gridView = (GridView) linearLayout.findViewById(R.id.grid_in_big);
+
+
+        LinearLayout linearLayout = new LinearLayout(context);
+//        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(
+//                LinearLayout.LayoutParams.WRAP_CONTENT,
+//                LinearLayout.LayoutParams.WRAP_CONTENT));
+//        linearLayout.setBackgroundResource(R.color.soft_red);
+//        setGridViewsparams(linearLayout, gridView);
+        GridView gridView = new GridView(context);
+
+//        gridView.setLayoutParams(new GridView.LayoutParams(GridView.LayoutParams.WRAP_CONTENT, GridView.LayoutParams.WRAP_CONTENT));
+//        gridView.setBackgroundResource(R.color.soft_red);
+        gridView.setNumColumns(3);
+
+        linearLayout.addView(gridView, getGridBothSides(), getGridBothSides());
+//        linearLayout.addView(gridView, GridView.LayoutParams.MATCH_PARENT, GridView.LayoutParams.MATCH_PARENT);
+
+
+
+
+
+        ///////////////////////////
+//        GridView gridView = (GridView)LayoutInflater.from(context).inflate(R.layout.grid_view_item, null);
         converter.converterPositionToXY(position);
         int x = converter.getX();
         int y = converter.getY();
 
         gridViews[x][y] = gridView;
         if(baseField[x][y] == null)
-            baseField[x][y] = new BaseFieldAdapter(context, moveController);
+            baseField[x][y] = new BaseFieldAdapter(context, moveController, display);
+
+
+
 
 
         checkAndCHangeColor(x, y);
+        checkWinFieldAndChangeWinnerCollors(x, y);
         gridView.setAdapter(baseField[x][y]);
 
         baseField[x][y].notifyDataSetInvalidated();
 
-
+//return gridView;
         return linearLayout;
+    }
+
+    private int getGridBothSides(){
+        Point size = new Point();
+        display.getSize(size);
+        int x = size.x;
+        bothSides = x / 3 - 5;
+        return bothSides;
     }
 
     public void setGridViewsBachgroundToDarkGrey(){
@@ -80,25 +117,55 @@ public class GrandFieldAdapter extends BaseAdapter {
         notifyDataSetInvalidated();
     }
 
-    public void changegridViewsColorToSoftBlue(int x, int y){
-        gridViews[x][y].setBackgroundResource(R.color.soft_blue);
+    public void changegridViewsColorToPlayerColor(int x, int y){
+        if (moveController.getCurrentPlayer().getFigure() == PlayersXO.O){
+            gridViews[x][y].setBackgroundResource(R.color.blue);
+        }
+        else {
+            gridViews[x][y].setBackgroundResource(R.color.red);
+        }
+
     }
 
     public void changegridViewsColorToSoftgray(int x, int y){
-        gridViews[x][y].setBackgroundResource(R.color.dark_grey);
+         gridViews[x][y].setBackgroundResource(R.color.dark_grey);
+    }
+
+    private void setBlueBackgroundForWinner(int x, int y) {
+        gridViews[x][y].setBackgroundResource(R.color.blue);
+    }
+
+    private void setRedBackgroundForWinner(int x, int y) {
+        gridViews[x][y].setBackgroundResource(R.color.red);
+    }
+
+
+    private void checkWinFieldAndChangeWinnerCollors(int x, int y){
+        if (baseField[x][y].getFieldType() != null){
+            if (baseField[x][y].getFieldType().getFigure() == PlayersXO.O){
+                setBlueBackgroundForWinner(x, y);
+            }
+            if (baseField[x][y].getFieldType().getFigure() == PlayersXO.X){
+                setRedBackgroundForWinner(x, y);
+            }
+        }
     }
 
     private void checkAndCHangeColor(int x, int y){
         if (baseField[x][y].isAdapterNowActivity()){
-            changegridViewsColorToSoftBlue(x, y);
-        } else {
+            changegridViewsColorToPlayerColor(x, y);
+        }
+
+        else {
             changegridViewsColorToSoftgray(x, y);
         }
     }
 
+
+
     public void changeColorInOneGridView(int x, int y){
         setGridViewsBachgroundToDarkGrey();
-        changegridViewsColorToSoftBlue(x, y);
+        changegridViewsColorToPlayerColor(x, y);
     }
 
     public void changeBaseFieldActivity(int x, int y){
@@ -152,10 +219,24 @@ public class GrandFieldAdapter extends BaseAdapter {
         return true;
     }
 
+
+
     private void noteWindowGameOver(){
-        Toast toast = Toast.makeText(context, "GAME OVER", Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
+
+            new  AlertDialog.Builder(context).setTitle(moveController.getCurrentPlayer().getName()
+                    + " are WIN!!!!")
+                    .setIcon(moveController.getCurrentPlayer().getImage())
+                    .setMessage("GAME OVER\n\nPLAY AGAIN?")
+                    .setNegativeButton("NO", (DialogInterface.OnClickListener) new ExitClickListener(context))
+                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            resetField();
+                            dialogInterface.cancel();
+                        }
+                    })
+                    .setCancelable(false).show();
+
     }
 
     public BaseFieldAdapter getBaseFieldFromGrand(){

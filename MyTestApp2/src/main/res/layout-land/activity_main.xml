@@ -130,49 +130,53 @@
     <!--</LinearLayout>-->
 <!--</LinearLayout>-->
 
-
-    <GridView
-        android:id="@+id/main_grid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numColumns="3"
-        android:horizontalSpacing="2dp"
-
-
-
-        android:layout_weight="1">
-
-
-
-    </GridView>
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom"
-        >
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            >
 
         <Button
-            android:id="@+id/btnBigField"
-            android:text="Big FIELD"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                android:id="@+id/btnBigField"
+                android:text="Big FIELD"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-        </LinearLayout>
 
         <Button
-            android:id="@+id/reset"
-            android:text="RESET"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+                android:id="@+id/reset"
+                android:text="RESET"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
     </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            >
+
+        <GridView
+                android:id="@+id/grid_view_on_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numColumns="3"
+                android:horizontalSpacing="5dp"
+                android:verticalSpacing="5dp"
+                android:background="@color/soft_grey"
+                android:layout_gravity="center"
+
+                />
+    </LinearLayout>
+
+
+
+
+
 
 
 
