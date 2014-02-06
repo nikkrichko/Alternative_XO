@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center"
+    >
 
     <LinearLayout
         android:orientation="horizontal"
@@ -72,21 +73,15 @@
                 <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="WIN and Block"
+                        android:text="@string/Rules_block"
                         android:id="@+id/rbBlock"
                         android:checked="true"
                         />
+
                 <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Win withOUT BLOCK"
-                        android:id="@+id/rbUnbloc"
-                        android:checked="false"
-                        />
-                <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="To first WIN"
+                        android:text="@string/Rules_first_win"
                         android:id="@+id/rbFirstWin"
                         android:checked="false"
                         />

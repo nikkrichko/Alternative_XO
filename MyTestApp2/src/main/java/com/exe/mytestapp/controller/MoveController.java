@@ -52,27 +52,23 @@ public class MoveController {
                         bfAdapter.setBigFigure();
 
                         bfAdapter.noteWindowWIN();
-
-
                         checkRuleFirstWin();
-
 
                     }
 
-
-
-
-
-
-
                         gfAdapter.setBaseFieldType();
+
+
                     if (isMovePossible(gfAdapter.getBaseField()[x][y])){
                         gfAdapter.changeBaseFieldActivityTrueToFree();
                     }
 
+
                     if (checkForWin(gfAdapter.getBaseFieldType(), currentPlayer)){
                         gameOver(gfAdapter);
                     }
+
+
                     changeCurrentPlayer();
                     this.moveListener.beforeMove(this.getCurrentPlayer());
                     return true;
@@ -90,11 +86,14 @@ public class MoveController {
     }
 
     private boolean isMovePossible(BaseFieldAdapter field){
-        if (field.getFieldType() !=null){
+        if (field.getFieldType() != null ){
             return true;
         }
+
         return false;
     }
+
+
 
     public int getX() {
         return x;
@@ -108,6 +107,7 @@ public class MoveController {
         this.x = x;
         this.y = y;
     }
+
 
     public void checkRuleFirstWin(){
         if (rules == Rules.FIRST_WIN){

@@ -56,50 +56,20 @@ public class GrandFieldAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-//        LinearLayout linearLayout = (LinearLayout)LayoutInflater.from(context).inflate(R.layout.grid_view_item, null);
-//        GridView gridView = (GridView) linearLayout.findViewById(R.id.grid_in_big);
-
-
         LinearLayout linearLayout = new LinearLayout(context);
-//        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.WRAP_CONTENT,
-//                LinearLayout.LayoutParams.WRAP_CONTENT));
-//        linearLayout.setBackgroundResource(R.color.soft_red);
-//        setGridViewsparams(linearLayout, gridView);
         GridView gridView = new GridView(context);
-
-//        gridView.setLayoutParams(new GridView.LayoutParams(GridView.LayoutParams.WRAP_CONTENT, GridView.LayoutParams.WRAP_CONTENT));
-//        gridView.setBackgroundResource(R.color.soft_red);
         gridView.setNumColumns(3);
-
         linearLayout.addView(gridView, getGridBothSides(), getGridBothSides());
-//        linearLayout.addView(gridView, GridView.LayoutParams.MATCH_PARENT, GridView.LayoutParams.MATCH_PARENT);
-
-
-
-
-
-        ///////////////////////////
-//        GridView gridView = (GridView)LayoutInflater.from(context).inflate(R.layout.grid_view_item, null);
         converter.converterPositionToXY(position);
         int x = converter.getX();
         int y = converter.getY();
-
         gridViews[x][y] = gridView;
         if(baseField[x][y] == null)
-            baseField[x][y] = new BaseFieldAdapter(context, moveController, display);
-
-
-
-
-
+            baseField[x][y] = new BaseFieldAdapter(context, moveController, display, rules);
         checkAndCHangeColor(x, y);
         checkWinFieldAndChangeWinnerCollors(x, y);
         gridView.setAdapter(baseField[x][y]);
-
         baseField[x][y].notifyDataSetInvalidated();
-
-//return gridView;
         return linearLayout;
     }
 

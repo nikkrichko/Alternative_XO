@@ -26,12 +26,14 @@ public class BaseFieldAdapter extends BaseAdapter {
     private boolean adapterNowActivity = true;
     private MoveController moveController;
     private int bothSides;
+    Rules rules;
 
-    public BaseFieldAdapter(Context context, MoveController moveController, Display display) {
+    public BaseFieldAdapter(Context context, MoveController moveController, Display display, Rules rules) {
         this.context = context;
         this.moveController = moveController;
         this.currentPlayer = this.moveController.getCurrentPlayer();
         this.display = display;
+        this.rules = rules;
     }
 
 
@@ -52,30 +54,19 @@ public class BaseFieldAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-
-//        ImageButton imageButton = (ImageButton) LayoutInflater.from(context).inflate(R.layout.field_item_button, null);
-//        imageButton.setImageResource(R.drawable.nulls);
         LinearLayout linearLayout = new LinearLayout(context);
         linearLayout.setGravity(17);
         ImageButton imageButton = new ImageButton(context);
-
-
         converter.converterPositionToXY(position);
         int x = converter.getX();
         int y = converter.getY();
-
         imageButton.setOnClickListener(new ButtonXOClickListener(this, context, moveController, x, y));
         activeDeactivate(imageButton);
         checkAndDeactivetedImageButton(imageButton);
         if (field[x][y] != null)
-
             imageButton.setImageResource(field[x][y].getImage());
-
-
         setBackgroundIfWinOnField(imageButton);
         linearLayout.addView(imageButton, getGridBothSides(), getGridBothSides());
-//        return imageButton;
         return linearLayout;
     }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">My Test App2</string>
+    <string name="app_name">ALTERNATIVE XO</string>
     <string name="hello_world">Hello world!</string>
     <string name="name_app">alternative XO</string>
     <string name="alredy_pressed">You alredy pressed this button</string>
@@ -11,6 +11,8 @@
     <string name="player_1_name">Onikita</string>
     <string name="player_2_name">Xslava</string>
     <string name="title_activity_introduction">IntroductionActivity</string>
+    <string name="Rules_block">Block rules</string>
+    <string name="Rules_first_win">First win rules</string>
     <string name="title_activity_introdatcion">IntrodactionActivity</string>
 
 </resources>
