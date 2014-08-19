@@ -10,7 +10,7 @@ import com.exe.mytestapp.R;
 import com.exe.mytestapp.controller.listeners.ButtonStartClickListener;
 import com.exe.mytestapp.controller.listeners.ExitClickListener;
 
-public class IntrodatcionActivity extends Activity {
+public class Alternative_XO_old extends Activity {
 
     private Button btnStart;
     private Button btnExit;

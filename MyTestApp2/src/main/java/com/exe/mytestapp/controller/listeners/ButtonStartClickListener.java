@@ -39,12 +39,12 @@ public class ButtonStartClickListener implements View.OnClickListener, RadioGrou
 
         player1.setName(player1Name.getText().toString());
         if (player1.getName().isEmpty()) {
-            player1.setName("PLAYER___1");
+            player1.setName("PLAYER_1");
         }
 
         player2.setName(player2Name.getText().toString());
         if (player2.getName().isEmpty()) {
-            player2.setName("PLAYER___2");
+            player2.setName("PLAYER_2");
         }
 
         intent.putExtra("PLAYER_1", player1);
@@ -61,9 +61,7 @@ public class ButtonStartClickListener implements View.OnClickListener, RadioGrou
                 rules = Rules.BLOCK;
                 break;
 
-            case R.id.rbUnbloc:
-                rules = Rules.BLOCK;
-                break;
+
 
             case R.id.rbFirstWin:
                 rules = Rules.FIRST_WIN;

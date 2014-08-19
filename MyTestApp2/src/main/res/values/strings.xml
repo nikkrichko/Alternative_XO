@@ -2,17 +2,38 @@
 <resources>
 
     <string name="app_name">ALTERNATIVE XO</string>
-    <string name="hello_world">Hello world!</string>
     <string name="name_app">alternative XO</string>
+    <string name="title_activity_introduction">ALTERNATIVE XO</string>
+
+    <string name="hello_world">Hello world!</string>
+
     <string name="alredy_pressed">You alredy pressed this button</string>
-    <string name="who_move_now">Now move: </string>
+    <string name="who_move_now">Now move:</string>
     <string name="action_settings">Settings</string>
     <string name="button_txt">button</string>
     <string name="player_1_name">Onikita</string>
     <string name="player_2_name">Xslava</string>
-    <string name="title_activity_introduction">IntroductionActivity</string>
+
     <string name="Rules_block">Block rules</string>
     <string name="Rules_first_win">First win rules</string>
-    <string name="title_activity_introdatcion">IntrodactionActivity</string>
+    <string name="First_player_name">1 player name: </string>
+    <string name="Second_player_name">2 player name: </string>
+    <string name="Enter_name">Enter your name</string>
+    <string name="Start_game">START</string>
+    <string name="Exit_game">EXIT</string>
+    <string name="BTN_rules">RULES</string>
+    <string name="BTN_RESET">RESET</string>
+    <string name="BTN_NEW_GAME">New game</string>
+    <string name="Do_you_want_continue">Do you want continue?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="quiz_exit">"Are you sure you want to exit?"</string>
+    <string name="exit_title">Really Exit?</string>
+    <string name="Are_win">are WIN!!!!"</string>
+    <string name="Game_over">GAME OVER</string>
+    <string name="Play_again">PLAY AGAIN?</string>
+    <string name="little_win">have little win</string>
+    <string name="Want_reset">Do you want reset?</string>
+    <string name="rules"></string>
 
 </resources>

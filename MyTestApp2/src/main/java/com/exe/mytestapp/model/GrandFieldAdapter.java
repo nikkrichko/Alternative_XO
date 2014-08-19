@@ -192,11 +192,11 @@ public class GrandFieldAdapter extends BaseAdapter {
     private void noteWindowGameOver(){
 
             new  AlertDialog.Builder(context).setTitle(moveController.getCurrentPlayer().getName()
-                    + " are WIN!!!!")
+                    + " " + context.getString(R.string.Are_win))
                     .setIcon(moveController.getCurrentPlayer().getImage())
-                    .setMessage("GAME OVER\n\nPLAY AGAIN?")
-                    .setNegativeButton("NO", (DialogInterface.OnClickListener) new ExitClickListener(context))
-                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    .setMessage( context.getString(R.string.Game_over) + "\n\n" + context.getString(R.string.Play_again))
+                    .setNegativeButton(R.string.No, (DialogInterface.OnClickListener) new ExitClickListener(context))
+                    .setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             resetField();

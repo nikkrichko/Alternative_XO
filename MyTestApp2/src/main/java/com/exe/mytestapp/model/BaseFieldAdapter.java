@@ -210,7 +210,7 @@ public class BaseFieldAdapter extends BaseAdapter {
     }
 
     public void noteWindowWIN() {
-        Toast toast = Toast.makeText(context, moveController.getCurrentPlayer().getName() + " is WIN!!!", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(context, moveController.getCurrentPlayer().getName() + " " + context.getString(R.string.little_win), Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.BOTTOM, 0, 0);
         toast.show();
     }

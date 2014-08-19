@@ -20,7 +20,7 @@
 
         </activity>
         <activity
-            android:name=".view.IntrodatcionActivity"
+            android:name=".view.Alternative_XO_old"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_introduction" >
             <intent-filter>

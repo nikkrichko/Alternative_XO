@@ -15,13 +15,13 @@
         android:gravity="center">
 
         <TextView
-            android:text="PLayer 1 Name: "
+            android:text="@string/First_player_name"
 
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <EditText
-            android:hint="Enter name"
+            android:hint="@string/Enter_name"
             android:id="@+id/player_1_name"
             android:textSize="20dp"
             android:layout_width="wrap_content"
@@ -35,13 +35,13 @@
         android:layout_weight="1">
 
     <TextView
-            android:text="PLayer 2 Name: "
+            android:text="@string/Second_player_name"
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     <EditText
             android:id="@+id/player_2_name"
-            android:hint="Enter name"
+            android:hint="@string/Enter_name"
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -107,20 +107,22 @@
 
         <Button
             android:id="@+id/BTN_start"
-            android:text="Start game"
+            android:text="@string/Start_game"
             android:textSize="30dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center" />
 
 
         <Button
             android:id="@+id/BTN_cancel"
-            android:text="EXIT"
+            android:text="@string/Exit_game"
             android:textSize="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center" />
 
     </LinearLayout>
 

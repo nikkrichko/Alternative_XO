@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">My Test App2</string>
-    <string name="hello_world">Привет МИР!!!!</string>
+    <string name="app_name">Альтернативные крестики-нолики</string>
+    <string name="title_activity_introduction">Альтернативные крестики-нолики</string>
+
+
+    <string name="alredy_pressed">You alredy pressed this button</string>
+    <string name="who_move_now">Сейчас ходит: </string>
     <string name="action_settings">Settings</string>
-    <string name="name_app">Альтернативные Крестики-Нолики</string>
-    <string name="alredy_pressed">Уже нажимали эту кнопку</string>
 
-    <string name="button_txt">button</string>
+    <string name="Rules_block">Стандартные правила</string>
+    <string name="Rules_first_win">До первой победы</string>
+    <string name="First_player_name">Игрок 1: </string>
+    <string name="Second_player_name">Игрок 2: </string>
+    <string name="Enter_name">   Имя   </string>
+    <string name="Start_game">НАЧАТЬ</string>
+    <string name="Exit_game">ВЫХОД</string>
+    <string name="BTN_rules">ПРАВИЛА</string>
+    <string name="BTN_RESET">СБРОСИТЬ</string>
+    <string name="BTN_NEW_GAME">Заново</string>
+    <string name="Do_you_want_continue">Желаете продолжить?</string>
+    <string name="Yes">Да</string>
+    <string name="No">Нет</string>
+    <string name="quiz_exit">"Вы уверены что хотите выйти?"</string>
+    <string name="exit_title">Вам что выйти захотелось?</string>
+    <string name="Are_win">ПОБЕДИЛ!!!!"</string>
+    <string name="Game_over">ИГРА ОКОНЧЕНА</string>
+    <string name="Play_again">ИГРАМ ЕЩЁ?</string>
+    <string name="little_win">одержал малую победу</string>
+    <string name="Want_reset">Желаете очистить поле?</string>
+    <string name="rules">У нас есть два вида полей.\n
+        Маленькие.\n
+        Большое.\n
+        У маленьких есть клетки.\n
+        У больших тоже, но это маленькие поля.\n
+        \n
+        В самом начале можем ходить куда угодно. В любое маленькое поле.\n
+        В зависимости в какую клетку вы поставили вашу фигуру, ваш противник будет её ставить в эту же клетку большого поля.\n
+        Кроме случая если в эту клетку (большого поля) нельзя ходить.\n
+        \n
+        Виигрыш в случае заполнения горизонтали, вертикали или диагонали большого поля (три в ряд).\n
+        Для заполнения одной большой клетки нужно вииграть на маленьком поле. Виигрываем так же (три в ряд).\n\n
 
+        Отдельное правило.\n
+        Если было выбрано правило до первой победы, то побеждает тот кто первым победит на маленьком поле.</string>
 </resources>
